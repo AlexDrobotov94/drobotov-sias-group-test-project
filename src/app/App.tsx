@@ -1,13 +1,17 @@
-import styled from "styled-components";
+import { ThemeProvider } from "styled-components";
+import { theme } from "../shared/styles/theme";
+import { MainPage } from "../pages/main";
+import { GlobalStyle } from "../shared/styles/global";
 
+// TODO: prettier styled components
+// TODO: fsd linter
 function App() {
-  return <Title>HI</Title>;
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <MainPage />
+    </ThemeProvider>
+  );
 }
-
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`;
 
 export default App;

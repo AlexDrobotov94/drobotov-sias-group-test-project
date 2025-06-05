@@ -1,3 +1,6 @@
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
 html,
 body,
 div,
@@ -79,12 +82,12 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
 }
 article,
 aside,
@@ -97,30 +100,36 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+display: block;
 }
 html {
-  height: 100%;
+height: 100%;
 }
 body {
-  line-height: 1;
+line-height: 1;
 }
 ol,
 ul {
-  list-style: none;
+list-style: none;
 }
 blockquote,
 q {
-  quotes: none;
+quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
-  content: none;
+content: "";
+content: none;
 }
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+border-collapse: collapse;
+border-spacing: 0;
 }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: ${({ theme }) => theme.colors.foreground};
+}
+`;
