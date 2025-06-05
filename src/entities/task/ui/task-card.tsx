@@ -1,28 +1,35 @@
 import styled from "styled-components";
 import type { TaskPriority } from "../model/types";
-import { Clock } from "lucide-react";
+import { CheckCircle2, Circle, Clock, Edit2, Trash } from "lucide-react";
 import { BadgeUi } from "@/shared/components/badge";
 import { Typography } from "@/shared/components/typograpy";
 import { CardUi } from "@/shared/components/card";
 
 type TaskCardProps = {
+  id: string;
+  title: string;
   description?: string;
   createdTime: string;
   priority: TaskPriority;
   isCompleted: boolean;
-  checkAction: React.ReactNode;
-  actions: React.ReactNode;
+
+  onCheck: (id: string) => void;
+  onEdit: (id: string) => void;
+  onDelete: (id: string) => void;
 };
 
 // TODO: плавное появление экшенов. Учесть мобильные устройства
 export function TaskCard(props: TaskCardProps) {
   const {
+    id,
+    title,
     priority,
     isCompleted,
     description,
     createdTime,
-    checkAction,
-    actions,
+    onCheck,
+    onEdit,
+    onDelete,
   } = props;
 
   const renderBadge = () => {
@@ -41,14 +48,23 @@ export function TaskCard(props: TaskCardProps) {
       <Wrapper $priority={priority}>
         <HeaderContainer>
           <HeaderContainerInfo>
-            {checkAction}
+            <CheckboxButton onClick={() => onCheck(id)}>
+              {isCompleted ? <CheckCircle2 /> : <Circle />}
+            </CheckboxButton>
             <TitleContainer>
-              <Title $isCompleted={isCompleted}>Обновить документацию</Title>
+              <Title $isCompleted={isCompleted}>{title}</Title>
               {renderBadge()}
             </TitleContainer>
           </HeaderContainerInfo>
 
-          <HeaderContainerActions>{actions}</HeaderContainerActions>
+          <HeaderContainerActions>
+            <ActionButton onClick={() => onEdit(id)} $variant="edit">
+              <Edit2 size={16} />
+            </ActionButton>
+            <ActionButton onClick={() => onDelete(id)} $variant="delete">
+              <Trash size={16} />
+            </ActionButton>
+          </HeaderContainerActions>
         </HeaderContainer>
 
         {description && <Typography>{description}</Typography>}
@@ -141,4 +157,48 @@ const TimeContainer = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.colors.secondary};
   font-size: ${({ theme }) => theme.fontSizes.small};
+`;
+
+const CheckboxButton = styled.button`
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+const ActionButton = styled.button<{ $variant: "edit" | "delete" }>`
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  width: 30px;
+  height: 30px;
+  border-radius: ${({ theme }) => theme.rounded.md};
+  opacity: 0.7;
+  transition: all 0.2s ease;
+
+  color: ${({ theme, $variant }) => {
+    switch ($variant) {
+      case "edit":
+        return theme.colors.doneForeground;
+      case "delete":
+        return theme.colors.errorForeground;
+    }
+  }};
+
+  background-color: ${({ theme, $variant }) => {
+    switch ($variant) {
+      case "edit":
+        return theme.colors.doneBackground;
+      case "delete":
+        return theme.colors.errorBackground;
+    }
+  }};
+
+  &:hover {
+    opacity: 1;
+  }
 `;
