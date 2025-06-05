@@ -31,13 +31,15 @@ const Root = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing["3xl"]};
+  padding-top: ${({ theme }) => theme.spacing.xl};
+  padding-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
 const HeaderContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: ${({ theme }) => theme.spacing.xl};
+
   gap: ${({ theme }) => theme.spacing.md};
 `;
 

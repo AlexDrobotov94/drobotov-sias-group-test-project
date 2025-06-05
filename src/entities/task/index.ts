@@ -1,4 +1,8 @@
-export { taskToggleComplete } from "./store/tasks-slice";
+export {
+  tasksToggleCompleteTask,
+  tasksDeleteTask,
+  tasksSetPriorityFilter,
+} from "./store/tasks-slice";
 
 export type { Task } from "./model/types";
 

@@ -5,8 +5,7 @@ export function RootLayout({ children }: { children: React.ReactNode }) {
 }
 
 const Root = styled.main`
-  /* width: 100vw;
-  height: 100vh; */
+  min-height: 100lvh;
   display: flex;
   justify-content: center;
 `;

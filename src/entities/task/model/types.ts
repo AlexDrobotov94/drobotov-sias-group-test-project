@@ -1,4 +1,5 @@
 export type TaskPriority = "high" | "medium" | "low";
+export type TaskStorePriority = TaskPriority | "all";
 
 export type Task = {
   id: string;
