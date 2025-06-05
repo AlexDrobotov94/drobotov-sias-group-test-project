@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { Container } from "../../../shared/components/container";
-import { Typography } from "../../../shared/components/typograpy";
+import { Typography } from "@/shared/components/typograpy";
+import { Container } from "@/shared/components/container";
 
-// TODO: добавить алиасы
 export function MainPage() {
   return (
     <Container>
