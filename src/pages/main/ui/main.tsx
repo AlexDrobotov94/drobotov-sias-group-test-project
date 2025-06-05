@@ -3,6 +3,7 @@ import { Typography } from "@/shared/components/typograpy";
 import { Container } from "@/shared/components/container";
 import { TaskCard, TaskTotalCard } from "@/entities/task";
 import { CheckCircle2 } from "lucide-react";
+import { TasksActionsWidget } from "@/widgets/tasks-actions";
 
 export function MainPage() {
   return (
@@ -17,9 +18,11 @@ export function MainPage() {
 
         <TasksTotalsListContainer>
           <TaskTotalCard total={12} status="total" />
-          <TaskTotalCard total={8} status="done" />
           <TaskTotalCard total={3} status="inProcess" />
+          <TaskTotalCard total={8} status="done" />
         </TasksTotalsListContainer>
+
+        <TasksActionsWidget />
 
         <TasksListContainer>
           <TaskCard

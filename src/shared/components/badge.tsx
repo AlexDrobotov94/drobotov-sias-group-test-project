@@ -5,7 +5,7 @@ type BadgeProps = {
   children: React.ReactNode;
 };
 
-export function Badge(props: BadgeProps) {
+export function BadgeUi(props: BadgeProps) {
   const { variant, children } = props;
 
   return <Root $variant={variant}>{children}</Root>;

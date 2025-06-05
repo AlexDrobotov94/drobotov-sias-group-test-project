@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import type { TaskPriority } from "../model/types";
 import { Clock } from "lucide-react";
-import { Badge } from "@/shared/components/badge";
+import { BadgeUi } from "@/shared/components/badge";
 import { Typography } from "@/shared/components/typograpy";
-import { Card } from "@/shared/components/card";
+import { CardUi } from "@/shared/components/card";
 
 type TaskCardProps = {
   description?: string;
@@ -28,16 +28,16 @@ export function TaskCard(props: TaskCardProps) {
   const renderBadge = () => {
     switch (priority) {
       case "high":
-        return <Badge variant="error">Высокий</Badge>;
+        return <BadgeUi variant="error">Высокий</BadgeUi>;
       case "medium":
-        return <Badge variant="warning">Средний</Badge>;
+        return <BadgeUi variant="warning">Средний</BadgeUi>;
       case "low":
-        return <Badge variant="success">Низкий</Badge>;
+        return <BadgeUi variant="success">Низкий</BadgeUi>;
     }
   };
 
   return (
-    <Card>
+    <CardUi>
       <Wrapper $priority={priority}>
         <HeaderContainer>
           <HeaderContainerInfo>
@@ -55,13 +55,13 @@ export function TaskCard(props: TaskCardProps) {
 
         <TimeContainer>
           <span>
-            <Clock style={{ width: "1rem", height: "1rem" }} />
+            <Clock size={16} />
           </span>
           <span>{createdTime}</span>
         </TimeContainer>
       </Wrapper>
       <IndicatorLine $priority={priority} />
-    </Card>
+    </CardUi>
   );
 }
 

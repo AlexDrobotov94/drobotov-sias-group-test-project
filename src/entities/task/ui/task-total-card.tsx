@@ -1,4 +1,4 @@
-import { Card } from "@/shared/components/card";
+import { CardUi } from "@/shared/components/card";
 import styled from "styled-components";
 import { CheckCircle2, Circle, Clock } from "lucide-react";
 
@@ -35,7 +35,7 @@ export function TaskTotalCard(props: TasdkTotalCardProps) {
   };
 
   return (
-    <Card>
+    <CardUi>
       <Wrapper>
         <InfoContainer>
           <Status>{renderStatus()}</Status>
@@ -44,7 +44,7 @@ export function TaskTotalCard(props: TasdkTotalCardProps) {
 
         <IconContainer $variant={status}>{renderIcon()}</IconContainer>
       </Wrapper>
-    </Card>
+    </CardUi>
   );
 }
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export function Card({ children }: { children: React.ReactNode }) {
+export function CardUi({ children }: { children: React.ReactNode }) {
   return <Root>{children}</Root>;
 }
 
