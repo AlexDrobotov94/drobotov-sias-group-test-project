@@ -1,9 +1,34 @@
 import styled from "styled-components";
 import { Typography } from "@/shared/components/typograpy";
 import { Container } from "@/shared/components/container";
-import { TaskCard, TaskTotalCard } from "@/entities/task";
+import { TaskCard, type Task } from "@/entities/task";
 import { CheckCircle2 } from "lucide-react";
 import { TasksActionsWidget } from "@/widgets/tasks-actions";
+import { TasksTotals } from "@/features/tasks-totals";
+
+const MOCK_TASKS: Task[] = [
+  {
+    id: "1",
+    createdTime: new Date(),
+    priority: "high",
+    isCompleted: false,
+    description: "Разработать компоненты для новой версии продукта",
+  },
+  {
+    id: "2",
+    createdTime: new Date(),
+    priority: "medium",
+    isCompleted: false,
+    description: "Разработать компоненты для новой версии продукта",
+  },
+  {
+    id: "3",
+    createdTime: new Date(),
+    priority: "low",
+    isCompleted: false,
+    description: "Разработать компоненты для новой версии продукта",
+  },
+];
 
 export function MainPage() {
   return (
@@ -17,9 +42,7 @@ export function MainPage() {
         </HeaderContainer>
 
         <TasksTotalsListContainer>
-          <TaskTotalCard total={12} status="total" />
-          <TaskTotalCard total={3} status="inProcess" />
-          <TaskTotalCard total={8} status="done" />
+          <TasksTotals tasks={MOCK_TASKS} />
         </TasksTotalsListContainer>
 
         <TasksActionsWidget />

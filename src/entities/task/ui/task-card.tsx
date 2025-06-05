@@ -132,6 +132,7 @@ const Title = styled.h3<{ $isCompleted: boolean }>`
     $isCompleted ? theme.colors.secondary : theme.colors.foreground};
   text-decoration-line: ${({ $isCompleted }) =>
     $isCompleted ? "line-through" : "none"};
+  opacity: ${({ $isCompleted }) => ($isCompleted ? 0.6 : 1)};
 `;
 
 const TimeContainer = styled.div`
