@@ -1,24 +1,81 @@
 import styled from "styled-components";
 import { Typography } from "@/shared/components/typograpy";
 import { Container } from "@/shared/components/container";
+import { TaskCard } from "@/entities/task";
+import { CheckCircle2 } from "lucide-react";
 
 export function MainPage() {
   return (
     <Container>
-      <HeaderContainer>
-        <Typography variant="h1" color="primary">
-          Task Manager
-        </Typography>
-        <Typography size="large">Тестовое задание Дроботов</Typography>
-      </HeaderContainer>
+      <Root>
+        <HeaderContainer>
+          <Typography variant="h1" color="primary">
+            Task Manager
+          </Typography>
+          <Typography size="large">Тестовое задание Дроботов</Typography>
+        </HeaderContainer>
+
+        <TasksListContainer>
+          <TaskCard
+            priority="high"
+            isDone={true}
+            description="Разработать компоненты для новой версии продукта"
+            createdTime="5 июн., 10:30"
+            checkAction={<CheckCircle2 />}
+            actions={
+              <div>
+                <button>upd</button>
+                <button>del</button>
+              </div>
+            }
+          />
+          <TaskCard
+            priority="medium"
+            isDone={true}
+            createdTime="5 июн., 10:30"
+            checkAction={<CheckCircle2 />}
+            actions={
+              <div>
+                <button>upd</button>
+                <button>del</button>
+              </div>
+            }
+          />
+          <TaskCard
+            priority="low"
+            isDone={false}
+            description="Разработать компоненты для новой версии продукта"
+            createdTime="5 июн., 10:30"
+            checkAction={<CheckCircle2 />}
+            actions={
+              <div>
+                <button>upd</button>
+                <button>del</button>
+              </div>
+            }
+          />
+        </TasksListContainer>
+      </Root>
     </Container>
   );
 }
 
-const HeaderContainer = styled.div`
+const Root = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing["3xl"]};
+`;
+
+const HeaderContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: ${({ theme }) => theme.spacing.xl};
+  gap: ${({ theme }) => theme.spacing.md};
+`;
+
+const TasksListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
 `;

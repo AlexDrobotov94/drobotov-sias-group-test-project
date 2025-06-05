@@ -5,6 +5,7 @@ export const theme = {
     primary: "#6366f1",
     foreground: "#4b5563",
     secondary: "#6b7280",
+    border: "#f3f4f6",
 
     doneForeground: "#4f46e5",
     doneBackground: "#e0e7ff",
@@ -21,20 +22,24 @@ export const theme = {
   spacing: {
     xs: "4px",
     sm: "8px",
+    base: "12px",
     md: "16px",
     lg: "24px",
     xl: "32px",
+    "2xl": "40px",
+    "3xl": "48px",
   },
-  radii: {
+  rounded: {
     sm: "4px",
     md: "8px",
     lg: "16px",
-    round: "9999px",
+    full: "9999px",
   },
   fontSizes: {
     small: "12px",
     medium: "14px",
     base: "16px",
+    md: "18px",
     large: "20px",
     h1: "48px",
     h2: "36px",
