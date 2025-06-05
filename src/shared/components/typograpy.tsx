@@ -10,6 +10,12 @@ interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
 }
 
+interface StyledTypographyProps {
+  $variant: Variant;
+  color?: keyof AppTheme["colors"];
+  size?: keyof AppTheme["fontSizes"];
+}
+
 const variantStyles = {
   h1: css`
     font-size: ${({ theme }) => theme.fontSizes.h1};
@@ -37,11 +43,11 @@ const variantStyles = {
   `,
 };
 
-const StyledTypography = styled.div<TypographyProps>`
+const StyledTypography = styled.div<StyledTypographyProps>`
   display: inline-flex;
   color: ${({ color, theme }) =>
     color ? theme.colors[color] : theme.colors.foreground};
-  ${({ variant = "div" }) => variantStyles[variant]}
+  ${({ $variant }) => variantStyles[$variant]}
   ${({ size, theme }) =>
     size &&
     css`
@@ -52,11 +58,18 @@ const StyledTypography = styled.div<TypographyProps>`
 export const Typography = ({
   variant = "div",
   color,
+  size,
   children,
   ...props
 }: TypographyProps) => {
   return (
-    <StyledTypography as={variant} variant={variant} color={color} {...props}>
+    <StyledTypography
+      as={variant}
+      $variant={variant}
+      color={color}
+      size={size}
+      {...props}
+    >
       {children}
     </StyledTypography>
   );

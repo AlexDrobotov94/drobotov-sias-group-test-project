@@ -1,4 +1,11 @@
-export function formatDate(date: Date): string {
+export function formatDate(isoString: string): string {
+  const date = new Date(isoString);
+
+  if (isNaN(date.getTime())) {
+    console.error("Invalid date:", isoString);
+    return "Неверная дата";
+  }
+
   return new Intl.DateTimeFormat("ru-RU", {
     day: "numeric",
     month: "short",

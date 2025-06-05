@@ -1,37 +1,9 @@
 import styled from "styled-components";
 import { Typography } from "@/shared/components/typograpy";
 import { Container } from "@/shared/components/container";
-import { type Task } from "@/entities/task";
 import { TasksActionsWidget } from "@/widgets/tasks-actions";
 import { TasksTotals } from "@/features/tasks-totals";
 import { TasksList } from "@/features/tasks-list";
-
-const MOCK_TASKS: Task[] = [
-  {
-    id: "1",
-    title: "Разработать компоненты для новой версии продукта",
-    createdTime: new Date(),
-    priority: "high",
-    isCompleted: false,
-    description: "Разработать компоненты для новой версии продукта",
-  },
-  {
-    id: "2",
-    title: "Разработать компоненты для новой версии продукта",
-    createdTime: new Date(),
-    priority: "medium",
-    isCompleted: false,
-    description: "Разработать компоненты для новой версии продукта",
-  },
-  {
-    id: "3",
-    title: "Разработать компоненты для новой версии продукта",
-    createdTime: new Date(),
-    priority: "low",
-    isCompleted: false,
-    description: "Разработать компоненты для новой версии продукта",
-  },
-];
 
 export function MainPage() {
   return (
@@ -45,12 +17,11 @@ export function MainPage() {
         </HeaderContainer>
 
         <TasksTotalsListContainer>
-          <TasksTotals tasks={MOCK_TASKS} />
+          <TasksTotals />
         </TasksTotalsListContainer>
-
         <TasksActionsWidget />
 
-        <TasksList tasks={MOCK_TASKS} />
+        <TasksList />
       </Root>
     </Container>
   );

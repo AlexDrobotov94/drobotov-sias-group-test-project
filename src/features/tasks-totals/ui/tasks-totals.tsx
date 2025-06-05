@@ -1,7 +1,10 @@
-import { TaskTotalCard, type Task } from "@/entities/task";
+import { TaskTotalCard } from "@/entities/task";
 import { getTasksTotals } from "../model/get-tasks-totals";
+import type { RootState } from "@/shared/store/store";
+import { useSelector } from "react-redux";
 
-export function TasksTotals({ tasks }: { tasks: Task[] }) {
+export function TasksTotals() {
+  const tasks = useSelector((state: RootState) => state.tasks);
   const { total, inProcess, done } = getTasksTotals({ tasks });
 
   return (

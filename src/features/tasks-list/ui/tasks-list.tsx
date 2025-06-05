@@ -1,10 +1,16 @@
-import { TaskCard, type Task } from "@/entities/task";
+import { TaskCard, taskToggleComplete } from "@/entities/task";
 import styled from "styled-components";
 import { formatDate } from "../model/format-date";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "@/shared/store/store";
 
-export function TasksList({ tasks }: { tasks: Task[] }) {
+export function TasksList() {
+  const tasks = useSelector((state: RootState) => state.tasks);
+  const dispatch = useDispatch();
+
   const handleCheck = (id: string) => {
     console.log("check", id);
+    dispatch(taskToggleComplete(id));
   };
 
   const handleEdit = (id: string) => {
