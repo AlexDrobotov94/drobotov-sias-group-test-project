@@ -6,6 +6,7 @@ type Variant = "h1" | "h2" | "h3" | "h4" | "p" | "div";
 interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   variant?: Variant;
   color?: keyof AppTheme["colors"];
+  size?: keyof AppTheme["fontSizes"];
   children: React.ReactNode;
 }
 
@@ -37,10 +38,15 @@ const variantStyles = {
 };
 
 const StyledTypography = styled.div<TypographyProps>`
-  margin: 0;
+  display: inline-flex;
   color: ${({ color, theme }) =>
     color ? theme.colors[color] : theme.colors.foreground};
   ${({ variant = "div" }) => variantStyles[variant]}
+  ${({ size, theme }) =>
+    size &&
+    css`
+      font-size: ${theme.fontSizes[size]};
+    `}
 `;
 
 export const Typography = ({

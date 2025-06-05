@@ -131,5 +131,6 @@ border-spacing: 0;
 body {
     font-family: 'Roboto', sans-serif;
     color: ${({ theme }) => theme.colors.foreground};
+    background: linear-gradient(to bottom right, #eef2ff, #ffffff, #faf5ff);
 }
 `;
