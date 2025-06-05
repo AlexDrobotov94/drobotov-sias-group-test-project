@@ -6,6 +6,7 @@ export const theme = {
     foreground: "#4b5563",
     secondary: "#6b7280",
     border: "#f3f4f6",
+    white: "#fff",
 
     doneForeground: "#4f46e5",
     doneBackground: "#e0e7ff",
@@ -32,6 +33,7 @@ export const theme = {
   rounded: {
     sm: "4px",
     md: "8px",
+    base: "12px",
     lg: "16px",
     full: "9999px",
   },
@@ -41,6 +43,8 @@ export const theme = {
     base: "16px",
     md: "18px",
     large: "20px",
+    xl: "24px",
+    "2xl": "30px",
     h1: "48px",
     h2: "36px",
     h3: "30px",

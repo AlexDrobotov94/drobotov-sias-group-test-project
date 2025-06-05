@@ -9,15 +9,21 @@ type TaskCardProps = {
   description?: string;
   createdTime: string;
   priority: TaskPriority;
-  isDone: boolean;
+  isCompleted: boolean;
   checkAction: React.ReactNode;
   actions: React.ReactNode;
 };
 
 // TODO: плавное появление экшенов. Учесть мобильные устройства
 export function TaskCard(props: TaskCardProps) {
-  const { priority, isDone, description, createdTime, checkAction, actions } =
-    props;
+  const {
+    priority,
+    isCompleted,
+    description,
+    createdTime,
+    checkAction,
+    actions,
+  } = props;
 
   const renderBadge = () => {
     switch (priority) {
@@ -37,7 +43,7 @@ export function TaskCard(props: TaskCardProps) {
           <HeaderContainerInfo>
             {checkAction}
             <TitleContainer>
-              <Title $isDone={isDone}>Обновить документацию</Title>
+              <Title $isCompleted={isCompleted}>Обновить документацию</Title>
               {renderBadge()}
             </TitleContainer>
           </HeaderContainerInfo>
@@ -119,12 +125,13 @@ const TitleContainer = styled.div`
   gap: ${({ theme }) => theme.spacing.sm};
 `;
 
-const Title = styled.h3<{ $isDone: boolean }>`
+const Title = styled.h3<{ $isCompleted: boolean }>`
   font-size: ${({ theme }) => theme.fontSizes.md};
   font-weight: 600;
-  color: ${({ theme, $isDone }) =>
-    $isDone ? theme.colors.secondary : theme.colors.foreground};
-  text-decoration-line: ${({ $isDone }) => ($isDone ? "line-through" : "none")};
+  color: ${({ theme, $isCompleted }) =>
+    $isCompleted ? theme.colors.secondary : theme.colors.foreground};
+  text-decoration-line: ${({ $isCompleted }) =>
+    $isCompleted ? "line-through" : "none"};
 `;
 
 const TimeContainer = styled.div`
