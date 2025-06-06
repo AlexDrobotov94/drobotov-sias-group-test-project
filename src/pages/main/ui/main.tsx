@@ -5,6 +5,23 @@ import { TasksActionsWidget } from "@/widgets/tasks-actions";
 import { TasksTotals } from "@/features/tasks";
 import { TasksList } from "@/features/tasks";
 import { AddTaskForm } from "@/features/task-forms";
+import { useState } from "react";
+import { Modal } from "@/shared/components/modal";
+
+function DialogDemo() {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <Modal
+      title="Modal title"
+      trigger={<button>Open Modal</button>}
+      open={open}
+      onOpenChange={setOpen}
+    >
+      awdawd
+    </Modal>
+  );
+}
 
 export function MainPage() {
   return (
@@ -16,6 +33,8 @@ export function MainPage() {
           </Typography>
           <Typography size="large">Тестовое задание Дроботов</Typography>
         </HeaderContainer>
+
+        <DialogDemo />
 
         <TasksTotalsListContainer>
           <TasksTotals />
