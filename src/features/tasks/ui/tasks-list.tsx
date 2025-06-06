@@ -3,11 +3,20 @@ import styled from "styled-components";
 
 import { formatDate } from "../model/format-date";
 import { useTasksList } from "../hooks/use-tasks-list";
+import { Typography } from "@/shared/components/typograpy";
 
 export function TasksList({ editTask }: { editTask: (id: string) => void }) {
   const { tasks, handleCheck, handleEdit, handleDelete } = useTasksList({
     editTask,
   });
+
+  if (tasks.length === 0) {
+    return (
+      <EmptyMessageContainer>
+        <Typography variant="h4">Cписок задач пуст</Typography>
+      </EmptyMessageContainer>
+    );
+  }
 
   return (
     <TasksListContainer>
@@ -29,6 +38,10 @@ export function TasksList({ editTask }: { editTask: (id: string) => void }) {
     </TasksListContainer>
   );
 }
+const EmptyMessageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const TasksListContainer = styled.ul`
   display: flex;

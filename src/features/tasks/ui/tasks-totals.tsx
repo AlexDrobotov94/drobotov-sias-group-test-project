@@ -1,18 +1,8 @@
 import { TaskTotalCard } from "@/entities/task";
-import { getTasksTotals } from "../model/get-tasks-totals";
-import type { RootState } from "@/shared/store/store";
-import { useSelector } from "react-redux";
-import { filterTasksByPriority } from "../model/filtering";
+import { useTasksTotals } from "../hooks/use-tasks-totals";
 
-// TODO: refactor
 export function TasksTotals() {
-  const tasks = useSelector((state: RootState) => state.tasks.tasks);
-  const filterPriority = useSelector(
-    (state: RootState) => state.tasks.priorityFilter
-  );
-
-  const filteredTasks = filterTasksByPriority(tasks, filterPriority);
-  const { total, inProcess, done } = getTasksTotals({ tasks: filteredTasks });
+  const { total, inProcess, done } = useTasksTotals();
 
   return (
     <>
