@@ -1,15 +1,27 @@
+import { generateMockTask } from "@/entities/task/model/mock-generator";
 import { BadgeUi } from "@/shared/components/badge";
 import { hexToRgba } from "@/shared/utils/hex-to-rgba";
 import styled, { keyframes } from "styled-components";
 
 export function CronBadge() {
   return (
-    <Wrapper>
-      <Badge>
-        <PulseDot />
-        <span>Новые задачи добавляются автоматически каждые 10-20 секунд</span>
-      </Badge>
-    </Wrapper>
+    <>
+      <button
+        onClick={() => {
+          console.log(generateMockTask());
+        }}
+      >
+        generate
+      </button>
+      <Wrapper>
+        <Badge>
+          <PulseDot />
+          <span>
+            Новые задачи добавляются автоматически каждые 10-20 секунд
+          </span>
+        </Badge>
+      </Wrapper>
+    </>
   );
 }
 
