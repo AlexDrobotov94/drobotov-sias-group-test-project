@@ -1,4 +1,5 @@
 export {
+  tasksAddTask,
   tasksToggleCompleteTask,
   tasksDeleteTask,
   tasksSetPriorityFilter,

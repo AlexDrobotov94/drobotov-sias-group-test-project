@@ -1,11 +1,14 @@
 export type TaskPriority = "high" | "medium" | "low";
 export type TaskStorePriority = TaskPriority | "all";
 
-export type Task = {
-  id: string;
+export type TaskDTO = {
   title: string;
-  createdTime: string;
-  priority: TaskPriority;
-  isCompleted: boolean;
   description?: string;
+  priority: TaskPriority;
+};
+
+export type Task = TaskDTO & {
+  id: string;
+  createdTime: string;
+  isCompleted: boolean;
 };
