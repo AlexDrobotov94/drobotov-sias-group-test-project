@@ -2,13 +2,25 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
-import type { Task, TaskDTO } from "@/entities/task";
-import { useDispatch } from "react-redux";
-import { tasksEditTask } from "@/entities/task";
+import { tasksAddTask, tasksEditTask, type Task } from "@/entities/task";
 import { ButtonUi } from "@/shared/components/buttons";
 import { Input } from "@/shared/components/form/input";
 import { Select } from "@/shared/components/form/select";
 import { Textarea } from "@/shared/components/form/textarea";
+import { useDispatch } from "react-redux";
+
+type TaskFormAddProps = {
+  mode: "add";
+  onCancel: () => void;
+};
+
+type TaskFormEditProps = {
+  mode: "edit";
+  initialValues: Task;
+  onCancel: () => void;
+};
+
+type TaskFormProps = TaskFormAddProps | TaskFormEditProps;
 
 const taskSchema = z.object({
   title: z.string().min(1, "Введите заголовок"),
@@ -20,16 +32,8 @@ const taskSchema = z.object({
 
 type TaskFormValues = z.infer<typeof taskSchema>;
 
-export function EditTaskForm({
-  onSubmit,
-  onCancel,
-  initialValues,
-}: {
-  initialValues: Task;
-  onSubmit?: (data: TaskDTO) => void;
-  onCancel?: () => void;
-}) {
-  const { id } = initialValues;
+export function TaskForm(props: TaskFormProps) {
+  const { mode, onCancel } = props;
   const dispatch = useDispatch();
 
   const {
@@ -40,28 +44,32 @@ export function EditTaskForm({
   } = useForm<TaskFormValues>({
     resolver: zodResolver(taskSchema),
     defaultValues: {
-      title: initialValues.title,
-      description: initialValues.description,
-      priority: initialValues.priority,
+      title: mode === "edit" ? props.initialValues.title : "",
+      description: mode === "edit" ? props.initialValues.description : "",
+      priority: mode === "edit" ? props.initialValues.priority || "low" : "low",
     },
   });
 
   const handleCancel = () => {
-    onCancel?.();
+    onCancel();
     reset();
   };
 
   const submitHandler = (data: TaskFormValues) => {
-    console.log(data);
-    onSubmit?.(data);
+    if (mode === "add") {
+      dispatch(tasksAddTask(data));
+    }
 
-    dispatch(
-      tasksEditTask({
-        id,
-        ...data,
-      })
-    );
-
+    if (mode === "edit") {
+      const { id } = props.initialValues;
+      dispatch(
+        tasksEditTask({
+          id,
+          ...data,
+        })
+      );
+    }
+    onCancel();
     reset();
   };
 
@@ -92,7 +100,7 @@ export function EditTaskForm({
 
       <ButtonsContainer>
         <ButtonUi type="submit" variant="primary">
-          Добавить задачу
+          {mode === "add" ? "Добавить" : "Сохранить изменения"}
         </ButtonUi>
         <ButtonUi variant="secondary" onClick={handleCancel}>
           Отменить
@@ -106,7 +114,6 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  /* width: 100%; */
 `;
 
 const ButtonsContainer = styled.div`

@@ -1,8 +1,8 @@
 import { Modal } from "@/shared/components/modal";
 import { useState } from "react";
-import { AddTaskForm } from "./add-task-form";
 import { ButtonUi } from "@/shared/components/buttons";
 import { Plus } from "lucide-react";
+import { TaskForm } from "./form";
 
 export function AddTaskButton() {
   const [open, setOpen] = useState(false);
@@ -18,10 +18,7 @@ export function AddTaskButton() {
       open={open}
       onOpenChange={setOpen}
     >
-      <AddTaskForm
-        onCancel={() => setOpen(false)}
-        onSubmit={() => setOpen(false)}
-      />
+      <TaskForm mode="add" onCancel={() => setOpen(false)} />
     </Modal>
   );
 }
