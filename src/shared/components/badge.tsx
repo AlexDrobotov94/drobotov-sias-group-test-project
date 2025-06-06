@@ -1,57 +1,64 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-type BadgeProps = {
-  variant: "success" | "warning" | "error";
+type BadgeVariant = "success" | "warning" | "error";
+
+interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: BadgeVariant;
   children: React.ReactNode;
-};
-
-export function BadgeUi(props: BadgeProps) {
-  const { variant, children } = props;
-
-  return <Root $variant={variant}>{children}</Root>;
 }
 
-const Root = styled.div<{ $variant: BadgeProps["variant"] }>`
-  display: grid;
-  place-items: center;
+interface StyledBadgeProps {
+  $variant?: BadgeVariant;
+}
+
+const variantStyles: Record<BadgeVariant, ReturnType<typeof css>> = {
+  success: css`
+    color: ${({ theme }) => theme.colors.successForeground};
+    background-color: ${({ theme }) => theme.colors.successBackground};
+    border-color: ${({ theme }) => theme.colors.successForeground};
+    opacity: 0.65;
+  `,
+  warning: css`
+    color: ${({ theme }) => theme.colors.warningForeground};
+    background-color: ${({ theme }) => theme.colors.warningBackground};
+    border-color: ${({ theme }) => theme.colors.warningForeground};
+    opacity: 0.65;
+  `,
+  error: css`
+    color: ${({ theme }) => theme.colors.errorForeground};
+    background-color: ${({ theme }) => theme.colors.errorBackground};
+    border-color: ${({ theme }) => theme.colors.errorForeground};
+    opacity: 0.65;
+  `,
+};
+
+const StyledBadge = styled.div<StyledBadgeProps>`
+  display: inline-flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.md};
   padding-inline: ${({ theme }) => theme.spacing.base};
   padding-top: ${({ theme }) => theme.spacing.xs};
   padding-bottom: ${({ theme }) => theme.spacing.xs};
   font-size: ${({ theme }) => theme.fontSizes.small};
   font-weight: 500;
   border-radius: ${({ theme }) => theme.rounded.full};
-  opacity: 0.65;
 
-  border-width: 1px;
-  border-style: solid;
-  border-color: ${({ theme, $variant }) => {
-    switch ($variant) {
-      case "success":
-        return theme.colors.successForeground;
-      case "warning":
-        return theme.colors.warningForeground;
-      case "error":
-        return theme.colors.errorForeground;
-    }
-  }};
-  color: ${({ theme, $variant }) => {
-    switch ($variant) {
-      case "success":
-        return theme.colors.successForeground;
-      case "warning":
-        return theme.colors.warningForeground;
-      case "error":
-        return theme.colors.errorForeground;
-    }
-  }};
-  background-color: ${({ theme, $variant }) => {
-    switch ($variant) {
-      case "success":
-        return theme.colors.successBackground;
-      case "warning":
-        return theme.colors.warningBackground;
-      case "error":
-        return theme.colors.errorBackground;
-    }
-  }};
+  border: 1px solid;
+
+  ${({ $variant }) => $variant && variantStyles[$variant]};
+  ${({ $variant, theme }) =>
+    !$variant &&
+    css`
+      color: ${theme.colors.foreground};
+      background-color: ${theme.colors.border};
+      border-color: ${theme.colors.foreground};
+    `}
 `;
+
+export function BadgeUi({ variant, children, ...props }: BadgeProps) {
+  return (
+    <StyledBadge $variant={variant} {...props}>
+      {children}
+    </StyledBadge>
+  );
+}

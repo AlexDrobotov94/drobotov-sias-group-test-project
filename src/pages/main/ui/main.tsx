@@ -3,6 +3,7 @@ import { Typography } from "@/shared/components/typograpy";
 import { Container } from "@/shared/components/container";
 import { TasksActionsWidget, TasksListWidget } from "@/widgets/tasks-actions";
 import { TasksTotals } from "@/features/tasks";
+import { CronBadge } from "@/features/tasks-cron";
 
 export function MainPage() {
   return (
@@ -22,6 +23,8 @@ export function MainPage() {
         <TasksActionsWidget />
 
         <TasksListWidget />
+
+        <CronBadge />
       </Root>
     </Container>
   );
