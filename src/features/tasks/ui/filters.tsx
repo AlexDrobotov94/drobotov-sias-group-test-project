@@ -1,16 +1,10 @@
-import { tasksSetPriorityFilter } from "@/entities/task";
-import { ButtonUi } from "@/shared/components/buttons";
-import type { RootState } from "@/shared/store/store";
-import { Filter } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { useTasksFilters } from "../hooks/use-tasks-filters";
+import { Filter } from "lucide-react";
+import { ButtonUi } from "@/shared/components/buttons";
 
-// TODO: refactor
 export function TasksFilters() {
-  const priorityFilter = useSelector(
-    (state: RootState) => state.tasks.priorityFilter
-  );
-  const dispatch = useDispatch();
+  const { options, selected, onChange } = useTasksFilters();
 
   return (
     <Wrapper>
@@ -20,38 +14,16 @@ export function TasksFilters() {
       </TitleContainer>
 
       <List>
-        <li>
-          <ButtonUi
-            variant={priorityFilter === "all" ? "default" : "secondary"}
-            onClick={() => dispatch(tasksSetPriorityFilter("all"))}
-          >
-            Все
-          </ButtonUi>
-        </li>
-        <li>
-          <ButtonUi
-            variant={priorityFilter === "high" ? "default" : "secondary"}
-            onClick={() => dispatch(tasksSetPriorityFilter("high"))}
-          >
-            Высокий
-          </ButtonUi>
-        </li>
-        <li>
-          <ButtonUi
-            variant={priorityFilter === "medium" ? "default" : "secondary"}
-            onClick={() => dispatch(tasksSetPriorityFilter("medium"))}
-          >
-            Средний
-          </ButtonUi>
-        </li>
-        <li>
-          <ButtonUi
-            variant={priorityFilter === "low" ? "default" : "secondary"}
-            onClick={() => dispatch(tasksSetPriorityFilter("low"))}
-          >
-            Низкий
-          </ButtonUi>
-        </li>
+        {options.map(({ value, label }) => (
+          <li key={value}>
+            <ButtonUi
+              variant={selected === value ? "default" : "secondary"}
+              onClick={() => onChange(value)}
+            >
+              {label}
+            </ButtonUi>
+          </li>
+        ))}
       </List>
     </Wrapper>
   );
