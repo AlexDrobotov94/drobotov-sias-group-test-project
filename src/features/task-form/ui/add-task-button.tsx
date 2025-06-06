@@ -17,6 +17,7 @@ export function AddTaskButton() {
       }
       open={open}
       onOpenChange={setOpen}
+      onOpenAutoFocus={true}
     >
       <TaskForm mode="add" onCancel={() => setOpen(false)} />
     </Modal>

@@ -6,7 +6,6 @@ import { theme } from "@/shared/styles/theme";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 
-// TODO: prettier styled components
 // TODO: fsd linter
 function App() {
   return (

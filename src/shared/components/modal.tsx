@@ -9,6 +9,7 @@ type ModalProps = {
   trigger?: React.ReactNode;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onOpenAutoFocus?: boolean;
 
   children: React.ReactNode;
 };
@@ -19,13 +20,20 @@ export function Modal({
   title,
   open,
   onOpenChange,
+  onOpenAutoFocus = false,
 }: ModalProps) {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       {trigger && <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>}
       <Dialog.Portal>
         <Overlay />
-        <Content>
+        <Content
+          onOpenAutoFocus={(e) => {
+            if (onOpenAutoFocus === false) {
+              e.preventDefault();
+            }
+          }}
+        >
           <DialogTitle asChild={!!title}>
             {title ? <Typography variant="h3">{title}</Typography> : null}
           </DialogTitle>

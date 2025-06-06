@@ -18,7 +18,6 @@ type TaskCardProps = {
   onDelete: (id: string) => void;
 };
 
-// TODO: плавное появление экшенов. Учесть мобильные устройства
 export function TaskCard(props: TaskCardProps) {
   const {
     id,
@@ -82,10 +81,6 @@ export function TaskCard(props: TaskCardProps) {
 }
 
 const HeaderContainerActions = styled.div`
-  /* opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.2s ease, visibility 0.2s ease; */
   display: flex;
   gap: ${({ theme }) => theme.spacing.sm};
 `;
@@ -100,12 +95,6 @@ const Wrapper = styled.article<{
   gap: ${({ theme }) => theme.spacing.lg};
 
   opacity: ${({ $isCompleted }) => ($isCompleted ? 0.8 : 1)};
-
-  /* &:hover ${HeaderContainerActions} {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  } */
 `;
 
 const IndicatorLine = styled.div<{ $priority: TaskPriority }>`
@@ -143,7 +132,7 @@ const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: ${({ theme }) => theme.spacing.sm};
+  gap: ${({ theme }) => theme.spacing.xs};
 `;
 
 const Title = styled.h3<{ $isCompleted: boolean }>`
