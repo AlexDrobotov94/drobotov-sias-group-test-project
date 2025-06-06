@@ -3,9 +3,10 @@ export {
   tasksToggleCompleteTask,
   tasksDeleteTask,
   tasksSetPriorityFilter,
+  tasksToggleSorting,
 } from "./store/tasks-slice";
 
-export type { Task, TaskStorePriority } from "./model/types";
+export type { Task, TaskStorePriority, TasksSorting } from "./model/types";
 
 export { TaskTotalCard } from "./ui/task-total-card";
 

@@ -3,6 +3,7 @@ import type {
   Task,
   TaskDTO,
   TaskPriority,
+  TasksSorting,
   TaskStorePriority,
 } from "../model/types";
 import { v4 as uuidv4 } from "uuid";
@@ -10,6 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 type TasksState = {
   tasks: Task[];
   priorityFilter: TaskStorePriority;
+  sorting: TasksSorting;
 };
 
 const initialState: TasksState = {
@@ -40,6 +42,7 @@ const initialState: TasksState = {
     },
   ],
   priorityFilter: "all",
+  sorting: "DESC",
 };
 
 export const tasksSlice = createSlice({
@@ -73,6 +76,9 @@ export const tasksSlice = createSlice({
     ) => {
       state.priorityFilter = action.payload;
     },
+    tasksToggleSorting: (state) => {
+      state.sorting = state.sorting === "ASC" ? "DESC" : "ASC";
+    },
   },
 });
 
@@ -81,6 +87,7 @@ export const {
   tasksDeleteTask,
   tasksToggleCompleteTask,
   tasksSetPriorityFilter,
+  tasksToggleSorting,
 } = tasksSlice.actions;
 
 export default tasksSlice.reducer;

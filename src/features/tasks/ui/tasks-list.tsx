@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/shared/store/store";
 import { formatDate } from "../model/format-date";
 import { filterTasksByPriority } from "../model/filtering";
+import { sortTasks } from "../model/sorting";
 
 // TODO: refactor
 export function TasksList() {
@@ -16,9 +17,12 @@ export function TasksList() {
   const priorityFilter = useSelector(
     (state: RootState) => state.tasks.priorityFilter
   );
+  const sorting = useSelector((state: RootState) => state.tasks.sorting);
+
   const dispatch = useDispatch();
 
   const filteredTasks = filterTasksByPriority(tasks, priorityFilter);
+  const sortedTasks = sortTasks(filteredTasks, sorting);
 
   const handleCheck = (id: string) => {
     dispatch(tasksToggleCompleteTask({ id }));
@@ -34,7 +38,7 @@ export function TasksList() {
 
   return (
     <TasksListContainer>
-      {filteredTasks.map((task) => (
+      {sortedTasks.map((task) => (
         <li key={task.id}>
           <TaskCard
             id={task.id}

@@ -1,5 +1,6 @@
 export type TaskPriority = "high" | "medium" | "low";
 export type TaskStorePriority = TaskPriority | "all";
+export type TasksSorting = "ASC" | "DESC";
 
 export type TaskDTO = {
   title: string;
