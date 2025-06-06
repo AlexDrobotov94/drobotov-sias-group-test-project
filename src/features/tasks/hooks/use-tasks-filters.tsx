@@ -1,5 +1,5 @@
 import {
-  tasksSetPriorityFilter,
+  setTasksPriorityFilter,
   type TaskStorePriority,
 } from "@/entities/task";
 import type { RootState } from "@/shared/store/store";
@@ -26,7 +26,7 @@ export function useTasksFilters() {
 
   const handleFilterChange = useCallback(
     (filter: TaskStorePriority) => {
-      dispatch(tasksSetPriorityFilter(filter));
+      dispatch(setTasksPriorityFilter(filter));
     },
     [dispatch]
   );

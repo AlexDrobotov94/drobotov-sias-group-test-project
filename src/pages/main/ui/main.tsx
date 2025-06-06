@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { Typography } from "@/shared/components/typograpy";
 import { Container } from "@/shared/components/container";
-import { TasksActionsWidget, TasksListWidget } from "@/widgets/tasks-actions";
-import { TasksTotals } from "@/features/tasks";
+import {
+  TasksActionsWidget,
+  TasksListWidget,
+  TasksTotalsWidget,
+} from "@/widgets/tasks-actions";
 import { CronBadge } from "@/features/tasks-cron";
 
 export function MainPage() {
@@ -16,9 +19,7 @@ export function MainPage() {
           <Typography size="large">Тестовое задание Дроботов</Typography>
         </HeaderContainer>
 
-        <TasksTotalsListContainer>
-          <TasksTotals />
-        </TasksTotalsListContainer>
+        <TasksTotalsWidget />
 
         <TasksActionsWidget />
 
@@ -43,11 +44,5 @@ const HeaderContainer = styled.section`
   flex-direction: column;
   align-items: center;
 
-  gap: ${({ theme }) => theme.spacing.md};
-`;
-
-const TasksTotalsListContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: ${({ theme }) => theme.spacing.md};
 `;

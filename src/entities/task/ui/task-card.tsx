@@ -74,8 +74,8 @@ export function TaskCard(props: TaskCardProps) {
           </span>
           <span>{createdTime}</span>
         </TimeContainer>
+        <IndicatorLine $priority={priority} />
       </Wrapper>
-      <IndicatorLine $priority={priority} />
     </CardUi>
   );
 }
@@ -89,12 +89,11 @@ const Wrapper = styled.article<{
   $priority: TaskPriority;
   $isCompleted: boolean;
 }>`
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.lg};
 
-  opacity: ${({ $isCompleted }) => ($isCompleted ? 0.8 : 1)};
+  opacity: ${({ $isCompleted }) => ($isCompleted ? 0.6 : 1)};
 `;
 
 const IndicatorLine = styled.div<{ $priority: TaskPriority }>`

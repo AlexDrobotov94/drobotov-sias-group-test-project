@@ -5,12 +5,12 @@ export { generateMockTask } from "./model/mock-generator";
 export { selectTaskById } from "./store/selectors";
 
 export {
-  tasksAddTask,
-  tasksToggleCompleteTask,
-  tasksDeleteTask,
-  tasksSetPriorityFilter,
-  tasksToggleSorting,
-  tasksEditTask,
+  addTask,
+  toggleCompleteTask,
+  deleteTask,
+  setTasksPriorityFilter,
+  toggleTasksSorting,
+  editTask,
 } from "./store/tasks-slice";
 
 export type {

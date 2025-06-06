@@ -1,4 +1,4 @@
-import { tasksDeleteTask, tasksToggleCompleteTask } from "@/entities/task";
+import { deleteTask, toggleCompleteTask } from "@/entities/task";
 
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/shared/store/store";
@@ -17,13 +17,12 @@ export function useTasksList({ editTask }: { editTask: (id: string) => void }) {
 
   const tasksReady = useMemo(() => {
     const filteredTasks = filterTasksByPriority(tasks, priorityFilter);
-
     return sortTasks(filteredTasks, sorting);
   }, [tasks, priorityFilter, sorting]);
 
-  const handleCheck = (id: string) => dispatch(tasksToggleCompleteTask({ id }));
+  const handleCheck = (id: string) => dispatch(toggleCompleteTask({ id }));
   const handleEdit = (id: string) => editTask(id);
-  const handleDelete = (id: string) => dispatch(tasksDeleteTask({ id }));
+  const handleDelete = (id: string) => dispatch(deleteTask({ id }));
 
   return {
     tasks: tasksReady,

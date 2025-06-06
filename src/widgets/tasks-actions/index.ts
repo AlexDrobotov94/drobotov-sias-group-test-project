@@ -1,3 +1,5 @@
-export { TasksListWidget } from "./ui/task-list-widget";
+export { TasksTotalsWidget } from "./ui/tasks-totals-widget";
 
-export { TasksActionsWidget } from "./ui/task-actions-widget";
+export { TasksListWidget } from "./ui/tasks-list-widget";
+
+export { TasksActionsWidget } from "./ui/tasks-actions-widget";

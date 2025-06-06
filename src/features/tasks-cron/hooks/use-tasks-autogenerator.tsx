@@ -49,24 +49,10 @@ export const useTaskAutoGenerator = (autoStart = false) => {
     taskAutoGenerator.stop();
   };
 
-  const toggle = () => {
-    if (!canControl.current) {
-      console.error("Этот компонент не может управлять TaskAutoGenerator");
-      return;
-    }
-
-    if (taskAutoGenerator.getStatus()) {
-      taskAutoGenerator.stop();
-    } else {
-      taskAutoGenerator.start();
-    }
-  };
-
   return {
     isRunning: taskAutoGenerator.getStatus(),
     canControl: canControl.current,
     start,
     stop,
-    toggle,
   };
 };

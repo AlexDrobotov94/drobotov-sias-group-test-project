@@ -1,4 +1,4 @@
-import { tasksToggleSorting } from "@/entities/task";
+import { toggleTasksSorting } from "@/entities/task";
 import { ButtonUi } from "@/shared/components/buttons";
 import type { RootState } from "@/shared/store/store";
 import { SortAsc } from "lucide-react";
@@ -9,7 +9,7 @@ export function SortTasks() {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(tasksToggleSorting());
+    dispatch(toggleTasksSorting());
   };
   return (
     <ButtonUi onClick={handleClick} variant="secondary">

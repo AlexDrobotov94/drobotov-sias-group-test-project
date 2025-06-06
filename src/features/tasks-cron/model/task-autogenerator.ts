@@ -1,12 +1,6 @@
 import { store } from "@/shared/store/store";
-import {
-  generateMockTask,
-  taskAddedToast,
-  tasksAddTask,
-} from "@/entities/task";
-
-type RandomDelay = [number, number];
-const RANDOM_DELAY: RandomDelay = [10000, 20000];
+import { generateMockTask, taskAddedToast, addTask } from "@/entities/task";
+import { GENERATOR_RANDOM_DELAY } from "../config";
 
 class TaskAutoGeneratorService {
   private timeoutId: NodeJS.Timeout | null = null;
@@ -25,17 +19,17 @@ class TaskAutoGeneratorService {
   private scheduleNext() {
     if (!this.isRunning) return;
 
-    const delay = this.getRandomDelay(RANDOM_DELAY);
+    const delay = this.getRandomDelay(GENERATOR_RANDOM_DELAY);
 
     this.timeoutId = setTimeout(() => {
       const task = generateMockTask();
-      store.dispatch(tasksAddTask(task));
+      store.dispatch(addTask(task));
       this.scheduleNext();
       taskAddedToast({ taskName: task.title });
     }, delay);
   }
 
-  private getRandomDelay(delay: RandomDelay) {
+  private getRandomDelay(delay: [number, number]) {
     const [min, max] = delay;
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
