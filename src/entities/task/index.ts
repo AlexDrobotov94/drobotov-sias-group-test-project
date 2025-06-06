@@ -1,3 +1,5 @@
+export { generateMockTask } from "./model/mock-generator";
+
 export { selectTaskById } from "./store/selectors";
 
 export {
