@@ -26,7 +26,7 @@ export function Modal({
       <Dialog.Portal>
         <Overlay />
         <Content>
-          <DialogTitle>
+          <DialogTitle asChild={!!title}>
             {title ? <Typography variant="h3">{title}</Typography> : null}
           </DialogTitle>
 
@@ -70,7 +70,7 @@ const Content = styled(Dialog.Content)`
   max-width: 700px;
   max-height: 85vh;
 
-  gap: ${({ theme }) => theme.spacing.md};
+  gap: ${({ theme }) => theme.spacing.xl};
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.rounded.lg};
   padding: ${({ theme }) => theme.spacing.lg};

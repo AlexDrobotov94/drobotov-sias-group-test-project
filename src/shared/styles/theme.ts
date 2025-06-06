@@ -6,6 +6,7 @@ export const theme = {
     foreground: "#4b5563",
     secondary: "#6b7280",
     border: "#f3f4f6",
+    borderInput: "#ccc",
     white: "#fff",
 
     doneForeground: "#4f46e5",
@@ -32,6 +33,7 @@ export const theme = {
   },
   rounded: {
     sm: "4px",
+    xs: "6px",
     md: "8px",
     base: "12px",
     lg: "16px",
@@ -53,6 +55,7 @@ export const theme = {
   shadows: {
     primary:
       "rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px",
+    input: "0 0 0 2px rgba(60, 31, 208, 0.2)",
   },
   gradients: {
     primary: "linear-gradient(to right, #6366f1, #9333ea)",

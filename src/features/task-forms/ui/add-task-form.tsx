@@ -6,6 +6,9 @@ import type { TaskDTO } from "@/entities/task/model/types";
 import { useDispatch } from "react-redux";
 import { tasksAddTask } from "@/entities/task";
 import { ButtonUi } from "@/shared/components/buttons";
+import { Input } from "@/shared/components/form/input";
+import { Select } from "@/shared/components/form/select";
+import { Textarea } from "@/shared/components/form/textarea";
 
 const taskSchema = z.object({
   title: z.string().min(1, "Введите заголовок"),
@@ -51,19 +54,20 @@ export function AddTaskForm({
 
   return (
     <Form onSubmit={handleSubmit(submitHandler)}>
-      <Label>
-        Заголовок
-        <Input {...register("title")} />
+      <div>
+        <Input placeholder="Введите заголовок" {...register("title")} />
         {errors.title && <Error>{errors.title.message}</Error>}
-      </Label>
+      </div>
 
-      <Label>
-        Описание
-        <Textarea rows={4} {...register("description")} />
-      </Label>
+      <div>
+        <Textarea
+          placeholder="Введите описание"
+          rows={4}
+          {...register("description")}
+        />
+      </div>
 
-      <Label>
-        Приоритет
+      <div>
         <Select {...register("priority")}>
           <option value="">-- выбрать --</option>
           <option value="high">Высокий</option>
@@ -71,7 +75,7 @@ export function AddTaskForm({
           <option value="low">Низкий</option>
         </Select>
         {errors.priority && <Error>{errors.priority.message}</Error>}
-      </Label>
+      </div>
 
       <ButtonsContainer>
         <ButtonUi type="submit" variant="primary">
@@ -89,28 +93,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100%;
-`;
-
-const Label = styled.label`
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-`;
-
-const Input = styled.input`
-  padding: 8px;
-  font-size: 14px;
-`;
-
-const Textarea = styled.textarea`
-  padding: 8px;
-  font-size: 14px;
-`;
-
-const Select = styled.select`
-  padding: 8px;
-  font-size: 14px;
+  /* width: 100%; */
 `;
 
 const ButtonsContainer = styled.div`

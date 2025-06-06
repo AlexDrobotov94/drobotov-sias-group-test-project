@@ -1,3 +1,4 @@
+import { AddTaskButton } from "@/features/task-forms";
 import { SortTasks, TasksFilters } from "@/features/tasks";
 import { CardUi } from "@/shared/components/card";
 import styled from "styled-components";
@@ -10,7 +11,9 @@ export function TasksActionsWidget() {
         <SortTasks />
       </TopContainer>
 
-      <BottomContainer>awdawd</BottomContainer>
+      <BottomContainer>
+        <AddTaskButton />
+      </BottomContainer>
     </CardUi>
   );
 }

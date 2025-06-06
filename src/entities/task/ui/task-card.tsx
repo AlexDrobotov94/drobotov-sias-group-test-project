@@ -45,7 +45,7 @@ export function TaskCard(props: TaskCardProps) {
 
   return (
     <CardUi>
-      <Wrapper $priority={priority}>
+      <Wrapper $priority={priority} $isCompleted={isCompleted}>
         <HeaderContainer>
           <HeaderContainerInfo>
             <CheckboxButton onClick={() => onCheck(id)}>
@@ -90,11 +90,16 @@ const HeaderContainerActions = styled.div`
   gap: ${({ theme }) => theme.spacing.sm};
 `;
 
-const Wrapper = styled.article<{ $priority: TaskPriority }>`
+const Wrapper = styled.article<{
+  $priority: TaskPriority;
+  $isCompleted: boolean;
+}>`
   position: relative;
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.lg};
+
+  opacity: ${({ $isCompleted }) => ($isCompleted ? 0.8 : 1)};
 
   /* &:hover ${HeaderContainerActions} {
     opacity: 1;
@@ -174,6 +179,8 @@ const ActionButton = styled.button<{ $variant: "edit" | "delete" }>`
   background-color: transparent;
   cursor: pointer;
 
+  display: grid;
+  place-items: center;
   width: 30px;
   height: 30px;
   border-radius: ${({ theme }) => theme.rounded.md};

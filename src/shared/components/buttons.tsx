@@ -14,6 +14,7 @@ const buttonVariants = {
     box-shadow: ${({ theme }) => theme.shadows.primary};
   `,
   secondary: css`
+    background-color: ${({ theme }) => theme.colors.border};
     color: ${({ theme }) => theme.colors.foreground};
   `,
   primary: css`
