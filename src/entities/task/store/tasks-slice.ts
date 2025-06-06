@@ -64,6 +64,16 @@ export const tasksSlice = createSlice({
     tasksDeleteTask: (state, action: PayloadAction<{ id: string }>) => {
       state.tasks = state.tasks.filter((t) => t.id !== action.payload.id);
     },
+    tasksEditTask: (
+      state,
+      action: PayloadAction<{ id: string } & Partial<Task>>
+    ) => {
+      const updatedTask = action.payload;
+      const task = state.tasks.find((t) => t.id === updatedTask.id);
+      if (task) {
+        Object.assign(task, action.payload);
+      }
+    },
     tasksToggleCompleteTask: (state, action: PayloadAction<{ id: string }>) => {
       const task = state.tasks.find((t) => t.id === action.payload.id);
       if (task) {
@@ -88,6 +98,7 @@ export const {
   tasksToggleCompleteTask,
   tasksSetPriorityFilter,
   tasksToggleSorting,
+  tasksEditTask,
 } = tasksSlice.actions;
 
 export default tasksSlice.reducer;

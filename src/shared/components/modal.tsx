@@ -6,7 +6,7 @@ import { Typography } from "./typograpy";
 type ModalProps = {
   title?: string;
 
-  trigger: React.ReactNode;
+  trigger?: React.ReactNode;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 
@@ -22,7 +22,7 @@ export function Modal({
 }: ModalProps) {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
-      <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
+      {trigger && <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>}
       <Dialog.Portal>
         <Overlay />
         <Content>

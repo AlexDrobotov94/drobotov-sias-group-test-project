@@ -12,7 +12,7 @@ import { filterTasksByPriority } from "../model/filtering";
 import { sortTasks } from "../model/sorting";
 
 // TODO: refactor
-export function TasksList() {
+export function TasksList({ editTask }: { editTask: (id: string) => void }) {
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
   const priorityFilter = useSelector(
     (state: RootState) => state.tasks.priorityFilter
@@ -29,7 +29,7 @@ export function TasksList() {
   };
 
   const handleEdit = (id: string) => {
-    console.log("edit", id);
+    editTask(id);
   };
 
   const handleDelete = (id: string) => {
