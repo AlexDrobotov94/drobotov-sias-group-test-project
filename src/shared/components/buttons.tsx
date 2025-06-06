@@ -27,6 +27,7 @@ const buttonVariants = {
 const StyledButton = styled.button<{ $variant: ButtonVariant }>`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: ${({ theme }) => theme.spacing.sm};
   padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.md}`};
   font-size: ${({ theme }) => theme.fontSizes.medium};

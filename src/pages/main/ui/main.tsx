@@ -4,12 +4,9 @@ import { Container } from "@/shared/components/container";
 import { TasksActionsWidget } from "@/widgets/tasks-actions";
 import { TasksTotals } from "@/features/tasks";
 import { TasksList } from "@/features/tasks";
-import { useDispatch } from "react-redux";
-import { tasksAddTask } from "@/entities/task";
+import { AddTaskForm } from "@/features/task-forms";
 
 export function MainPage() {
-  const dispatch = useDispatch();
-
   return (
     <Container>
       <Root>
@@ -20,24 +17,13 @@ export function MainPage() {
           <Typography size="large">Тестовое задание Дроботов</Typography>
         </HeaderContainer>
 
-        <button
-          onClick={() => {
-            dispatch(
-              tasksAddTask({
-                title: "Новая задача",
-                description: "Описание задачи",
-                priority: "high",
-              })
-            );
-          }}
-        >
-          Add
-        </button>
-
         <TasksTotalsListContainer>
           <TasksTotals />
         </TasksTotalsListContainer>
+
         <TasksActionsWidget />
+
+        <AddTaskForm />
 
         <TasksList />
       </Root>
