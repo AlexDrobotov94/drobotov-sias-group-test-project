@@ -3,7 +3,6 @@ import { hexToRgba } from "@/shared/utils/hex-to-rgba";
 import styled, { keyframes } from "styled-components";
 import { useTaskAutoGenerator } from "../hooks/use-tasks-autogenerator";
 import { useEffect } from "react";
-import { toast } from "@/shared/components/toast";
 
 export function CronBadge() {
   const { start, stop } = useTaskAutoGenerator(true);
@@ -17,32 +16,12 @@ export function CronBadge() {
   }, [start, stop]);
 
   return (
-    <>
-      <button
-        onClick={() => {
-          toast({
-            title: "Новая задача",
-            description: "Задача успешно создана",
-            button: {
-              label: "Ок",
-              onClick: () => {
-                console.log("Clicked OK");
-              },
-            },
-          });
-        }}
-      >
-        TOAST
-      </button>
-      <Wrapper>
-        <Badge>
-          <PulseDot />
-          <span>
-            Новые задачи добавляются автоматически каждые 10-20 секунд
-          </span>
-        </Badge>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <Badge>
+        <PulseDot />
+        <span>Новые задачи добавляются автоматически каждые 10-20 секунд</span>
+      </Badge>
+    </Wrapper>
   );
 }
 

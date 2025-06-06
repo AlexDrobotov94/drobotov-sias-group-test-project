@@ -1,5 +1,9 @@
 import { store } from "@/shared/store/store";
-import { generateMockTask, tasksAddTask } from "@/entities/task";
+import {
+  generateMockTask,
+  taskAddedToast,
+  tasksAddTask,
+} from "@/entities/task";
 
 type RandomDelay = [number, number];
 const RANDOM_DELAY: RandomDelay = [10000, 20000];
@@ -26,7 +30,8 @@ class TaskAutoGeneratorService {
     this.timeoutId = setTimeout(() => {
       const task = generateMockTask();
       store.dispatch(tasksAddTask(task));
-      this.scheduleNext(); // планируем следующую генерацию
+      this.scheduleNext();
+      taskAddedToast({ taskName: task.title });
     }, delay);
   }
 
