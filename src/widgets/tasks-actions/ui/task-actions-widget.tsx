@@ -1,4 +1,4 @@
-import { SortTasks, TasksFilters } from "@/features/tasks-actions";
+import { SortTasks, TasksFilters } from "@/features/tasks";
 import { CardUi } from "@/shared/components/card";
 import styled from "styled-components";
 

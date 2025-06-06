@@ -4,7 +4,7 @@ export {
   tasksSetPriorityFilter,
 } from "./store/tasks-slice";
 
-export type { Task } from "./model/types";
+export type { Task, TaskStorePriority } from "./model/types";
 
 export { TaskTotalCard } from "./ui/task-total-card";
 

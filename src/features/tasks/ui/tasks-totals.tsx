@@ -2,6 +2,7 @@ import { TaskTotalCard } from "@/entities/task";
 import { getTasksTotals } from "../model/get-tasks-totals";
 import type { RootState } from "@/shared/store/store";
 import { useSelector } from "react-redux";
+import { filterTasksByPriority } from "../model/filtering";
 
 // TODO: refactor
 export function TasksTotals() {
@@ -10,11 +11,7 @@ export function TasksTotals() {
     (state: RootState) => state.tasks.priorityFilter
   );
 
-  const filteredTasks =
-    filterPriority === "all"
-      ? tasks
-      : tasks.filter((task) => task.priority === filterPriority);
-
+  const filteredTasks = filterTasksByPriority(tasks, filterPriority);
   const { total, inProcess, done } = getTasksTotals({ tasks: filteredTasks });
 
   return (

@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { Typography } from "@/shared/components/typograpy";
 import { Container } from "@/shared/components/container";
 import { TasksActionsWidget } from "@/widgets/tasks-actions";
-import { TasksTotals } from "@/features/tasks-totals";
-import { TasksList } from "@/features/tasks-list";
+import { TasksTotals } from "@/features/tasks";
+import { TasksList } from "@/features/tasks";
 
 export function MainPage() {
   return (

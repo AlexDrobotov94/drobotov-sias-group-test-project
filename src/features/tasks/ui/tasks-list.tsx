@@ -4,9 +4,10 @@ import {
   tasksToggleCompleteTask,
 } from "@/entities/task";
 import styled from "styled-components";
-import { formatDate } from "../model/format-date";
+
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/shared/store/store";
+import { formatDate } from "../model/format-date";
 
 // TODO: refactor
 export function TasksList() {
