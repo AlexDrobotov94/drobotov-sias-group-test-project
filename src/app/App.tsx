@@ -5,6 +5,7 @@ import { GlobalStyle } from "@/shared/styles/global";
 import { theme } from "@/shared/styles/theme";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
+import { Toaster } from "sonner";
 
 // TODO: fsd linter
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <RootLayout>
           <MainPage />
         </RootLayout>
+        <Toaster position="top-right" />
       </ThemeProvider>
     </Provider>
   );
