@@ -1,4 +1,4 @@
-import { EditTaskModal } from "@/features/task-forms";
+import { EditTaskModal } from "@/features/task-form";
 import { TasksList } from "@/features/tasks";
 import { useState } from "react";
 
