@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import { store } from "@/shared/store/store";
 import { theme } from "@/shared/styles/theme";
 import { GlobalStyle } from "@/shared/styles/global";
+import { NotificationsProvider } from "./notifications-provider";
 
 interface AppProvidersProps {
   children: React.ReactNode;
@@ -13,9 +14,11 @@ interface AppProvidersProps {
 export const AppProviders = ({ children }: AppProvidersProps) => (
   <ReduxProvider store={store}>
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      {children}
-      <Toaster position="top-right" />
+      <NotificationsProvider>
+        <GlobalStyle />
+        {children}
+        <Toaster position="top-right" />
+      </NotificationsProvider>
     </ThemeProvider>
   </ReduxProvider>
 );

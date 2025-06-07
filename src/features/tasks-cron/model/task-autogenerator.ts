@@ -1,5 +1,5 @@
 import { store } from "@/shared/store/store";
-import { generateMockTask, taskAddedToast, addTask } from "@/entities/task";
+import { generateMockTask, addTask } from "@/entities/task";
 import { GENERATOR_RANDOM_DELAY } from "../config";
 
 class TaskAutoGeneratorService {
@@ -25,7 +25,6 @@ class TaskAutoGeneratorService {
       const task = generateMockTask();
       store.dispatch(addTask(task));
       this.scheduleNext();
-      taskAddedToast({ taskName: task.title });
     }, delay);
   }
 

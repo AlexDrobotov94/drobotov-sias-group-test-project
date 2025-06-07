@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { taskAddedToast, addTask, editTask } from "@/entities/task";
+import { addTask, editTask } from "@/entities/task";
 import { useDispatch } from "react-redux";
 import type { TaskFormProps } from "../model/types";
 
@@ -47,7 +47,6 @@ export function useTaskForm(props: TaskFormProps) {
   const submitHandler = (data: TaskFormValues) => {
     if (mode === "add") {
       dispatch(addTask(data));
-      taskAddedToast({ taskName: data.title });
     }
 
     if (mode === "edit") {
