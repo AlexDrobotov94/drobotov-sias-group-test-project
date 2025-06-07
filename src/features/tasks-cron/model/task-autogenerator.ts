@@ -1,5 +1,5 @@
 import { store } from "@/shared/store/store";
-import { generateMockTask, addTask } from "@/entities/task";
+import { generateMockTask, addTask, tasksNotifications } from "@/entities/task";
 import { TASKS_CRON_CONFIG } from "../config";
 
 const ENABLE_CRON = TASKS_CRON_CONFIG.enableCron;
@@ -31,6 +31,7 @@ class TaskAutoGeneratorService {
     this.timeoutId = setTimeout(() => {
       const task = generateMockTask();
       store.dispatch(addTask(task));
+      tasksNotifications.taskAdded(task.title);
       this.scheduleNext();
     }, delay);
   }

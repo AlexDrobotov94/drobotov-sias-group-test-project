@@ -1,10 +1,7 @@
-"use client";
-
 import styled from "styled-components";
 import { toast as sonnerToast } from "sonner";
 import { hexToRgba } from "../utils/hex-to-rgba";
 
-// FIXME: размер компонента
 interface ToastProps {
   id: string | number;
   title: string;
