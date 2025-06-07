@@ -17,6 +17,7 @@ export function MainPage() {
             Task Manager
           </Title>
           <Typography size="large">Тестовое задание Дроботов</Typography>
+          <Typography size="large">Test deploy update</Typography>
         </HeaderContainer>
 
         <TasksTotalsWidget />
