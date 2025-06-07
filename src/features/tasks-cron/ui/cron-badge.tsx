@@ -52,6 +52,6 @@ const PulseDot = styled.div`
   width: 0.5rem;
   height: 0.5rem;
   background-color: ${({ theme }) => theme.colors.primary};
-  border-radius: 9999px;
+  border-radius: ${({ theme }) => theme.rounded.full};
   animation: ${pulse} 1.5s infinite;
 `;

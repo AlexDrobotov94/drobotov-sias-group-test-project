@@ -75,7 +75,7 @@ const Content = styled(Dialog.Content)`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90vw;
-  max-width: 700px;
+  max-width: 43.75rem; // 700px
   max-height: 85vh;
 
   gap: ${({ theme }) => theme.spacing.xl};
@@ -88,16 +88,15 @@ const Content = styled(Dialog.Content)`
 const DialogTitle = styled(Dialog.Title)`
   margin: 0;
   font-weight: 600;
-  font-size: 18px;
   color: #111;
 `;
 
 const CloseButton = styled(Dialog.Close)`
   cursor: pointer;
   position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 2px;
+  top: 0.625rem; // 10px
+  right: 0.625rem; // 10px
+  padding: 0.125rem; // 2px
   background: none;
   border: none;
   display: grid;

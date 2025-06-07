@@ -4,7 +4,7 @@ type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement>;
 
 export const Select = styled.select<SelectProps>`
   width: 100%;
-  padding: 8px 12px;
+  padding: ${({ theme }) => theme.spacing.sm + " " + theme.spacing.base};
   border: 1px solid ${({ theme }) => theme.colors.borderInput};
   border-radius: ${({ theme }) => theme.rounded.xs};
   background-color: ${({ theme }) => theme.colors.white};

@@ -169,8 +169,8 @@ const ActionButton = styled.button<{ $variant: "edit" | "delete" }>`
 
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
+  width: 1.875rem; // 30px
+  height: 1.875rem; // 30px
   border-radius: ${({ theme }) => theme.rounded.md};
   opacity: 0.7;
   transition: all 0.2s ease;
