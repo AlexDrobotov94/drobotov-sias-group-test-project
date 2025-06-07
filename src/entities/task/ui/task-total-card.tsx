@@ -83,8 +83,8 @@ const Total = styled.div<{ $variant: TaskTotalStatus }>`
 const IconContainer = styled.div<{ $variant: TaskTotalStatus }>`
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
+  width: 3rem; // 48px
+  height: 3rem; // 48px
   border-radius: ${({ theme }) => theme.rounded.base};
   color: ${({ theme, $variant }) => {
     switch ($variant) {

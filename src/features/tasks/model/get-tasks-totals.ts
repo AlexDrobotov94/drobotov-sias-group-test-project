@@ -1,6 +1,5 @@
 import { type Task } from "@/entities/task";
 
-// TODO: типизировать возвращаемое значение
 export function getTasksTotals({ tasks }: { tasks: Task[] }): {
   total: number;
   inProcess: number;

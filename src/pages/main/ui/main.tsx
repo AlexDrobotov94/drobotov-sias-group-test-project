@@ -13,9 +13,9 @@ export function MainPage() {
     <Container>
       <Root>
         <HeaderContainer>
-          <Typography variant="h1" color="primary">
+          <Title variant="h1" color="primary">
             Task Manager
-          </Typography>
+          </Title>
           <Typography size="large">Тестовое задание Дроботов</Typography>
         </HeaderContainer>
 
@@ -45,4 +45,12 @@ const HeaderContainer = styled.section`
   align-items: center;
 
   gap: ${({ theme }) => theme.spacing.md};
+`;
+
+const Title = styled(Typography)`
+  background-image: ${({ theme }) => theme.gradients.primary};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 `;

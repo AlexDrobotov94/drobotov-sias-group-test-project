@@ -4,13 +4,13 @@ type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export const Textarea = styled.textarea<TextareaProps>`
   width: 100%;
-  padding: 10px 12px;
+  padding: ${({ theme }) => theme.spacing.sm + " " + theme.spacing.base};
   border: 1px solid ${({ theme }) => theme.colors.borderInput};
   border-radius: ${({ theme }) => theme.rounded.xs};
   background-color: ${({ theme }) => theme.colors.white};
 
   resize: none;
-  min-height: 80px;
+  min-height: 5rem; // 80px
 
   &:focus {
     outline: none;

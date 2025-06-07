@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { toast as sonnerToast } from "sonner";
 import { hexToRgba } from "../utils/hex-to-rgba";
 
+// FIXME: размер компонента
 interface ToastProps {
   id: string | number;
   title: string;
@@ -53,7 +54,7 @@ const ToastWrapper = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 364px;
+  max-width: 22.75rem; // 364px
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.rounded.md};
   box-shadow: ${({ theme }) => theme.shadows.primary};

@@ -10,7 +10,7 @@ const Root = styled.article`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.lg};
   overflow: hidden;
-  border: 2px solid ${({ theme }) => theme.colors.border};
+  border: 0.125rem solid ${({ theme }) => theme.colors.border}; // 2px
   padding: ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.rounded.lg};
   background-color: ${({ theme }) => theme.colors.white};
