@@ -6,25 +6,37 @@ import styled from "styled-components";
 export function TasksActionsWidget() {
   return (
     <CardUi>
-      <TopContainer>
-        <TasksFilters />
-        <SortTasks />
-      </TopContainer>
+      <Wrapper>
+        <LeftContainer>
+          <TasksFilters />
+        </LeftContainer>
 
-      <BottomContainer>
-        <AddTaskButton />
-      </BottomContainer>
+        <RightContainer>
+          <SortTasks />
+          <AddTaskButton />
+        </RightContainer>
+      </Wrapper>
     </CardUi>
   );
 }
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: ${({ theme }) => theme.spacing.lg};
+`;
 
-const TopContainer = styled.div`
+const LeftContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex: 1 1 80%;
 `;
 
-const BottomContainer = styled.div`
+const RightContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.md};
+  flex: 1 1 auto;
 `;

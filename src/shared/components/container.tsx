@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: calc(75rem + 2rem); // 1200 px
+  max-width: ${({ theme }) => `calc(${theme.breakpoints.xl} + 2rem)`};
   padding-inline: 1rem;
   width: 100%;
 `;

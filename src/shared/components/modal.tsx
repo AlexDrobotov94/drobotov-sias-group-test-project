@@ -37,6 +37,7 @@ export function Modal({
           <DialogTitle asChild={!!title}>
             {title ? <Typography variant="h3">{title}</Typography> : null}
           </DialogTitle>
+          <Dialog.Description></Dialog.Description>
 
           {children}
 

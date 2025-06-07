@@ -1,3 +1,5 @@
+import { fluidSize } from "../utils/fluid";
+
 export const theme = {
   colors: {
     primary: "#6366f1",
@@ -18,6 +20,12 @@ export const theme = {
 
     errorForeground: "#dc2626",
     errorBackground: "#fee2e2",
+  },
+  breakpoints: {
+    sm: "640px", // => @media (min-width: 640px)
+    md: "768px", // => @media (min-width: 768px)
+    lg: "1024px", // => @media (min-width: 1024px)
+    xl: "1280px", // => @media (min-width: 1280px)
   },
   spacing: {
     xs: "0.25rem", // 4px
@@ -40,15 +48,15 @@ export const theme = {
   fontSizes: {
     small: "0.75rem", // 12px
     medium: "0.875rem", // 14px
-    base: "1rem", // 16px
-    md: "1.125rem", // 18px
-    large: "1.25rem", // 20px
+    base: fluidSize(16, 14),
+    md: fluidSize(18, 16),
+    large: fluidSize(20, 18),
     xl: "1.5rem", // 24px
     "2xl": "1.875rem", // 30px
-    h1: "3rem", // 48px
-    h2: "2.25rem", // 36px
-    h3: "1.875rem", // 30px
-    h4: "1.5rem", // 24px
+    h1: fluidSize(60, 40),
+    h2: fluidSize(24, 20),
+    h3: fluidSize(20, 18),
+    h4: fluidSize(16, 14),
   },
   shadows: {
     primary:

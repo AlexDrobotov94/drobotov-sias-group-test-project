@@ -47,8 +47,11 @@ export function TaskCard(props: TaskCardProps) {
       <Wrapper $priority={priority} $isCompleted={isCompleted}>
         <HeaderContainer>
           <HeaderContainerInfo>
-            <CheckboxButton onClick={() => onCheck(id)}>
-              {isCompleted ? <CheckCircle2 /> : <Circle />}
+            <CheckboxButton
+              onClick={() => onCheck(id)}
+              $isCompleted={isCompleted}
+            >
+              {isCompleted ? <CheckCircle2 size={20} /> : <Circle size={20} />}
             </CheckboxButton>
             <TitleContainer>
               <Title $isCompleted={isCompleted}>{title}</Title>
@@ -80,11 +83,6 @@ export function TaskCard(props: TaskCardProps) {
   );
 }
 
-const HeaderContainerActions = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing.sm};
-`;
-
 const Wrapper = styled.article<{
   $priority: TaskPriority;
   $isCompleted: boolean;
@@ -94,6 +92,10 @@ const Wrapper = styled.article<{
   gap: ${({ theme }) => theme.spacing.lg};
 
   opacity: ${({ $isCompleted }) => ($isCompleted ? 0.6 : 1)};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    gap: ${({ theme }) => theme.spacing.md};
+  }
 `;
 
 const IndicatorLine = styled.div<{ $priority: TaskPriority }>`
@@ -119,12 +121,24 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: ${({ theme }) => theme.spacing.md};
 `;
 
 const HeaderContainerInfo = styled.div`
   display: flex;
   gap: ${({ theme }) => theme.spacing.base};
   align-items: center;
+`;
+
+const HeaderContainerActions = styled.div`
+  display: flex;
+  flex-direction: row;
+  row-gap: ${({ theme }) => theme.spacing.md};
+  column-gap: ${({ theme }) => theme.spacing.base};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const TitleContainer = styled.div`
@@ -152,9 +166,14 @@ const TimeContainer = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.small};
 `;
 
-const CheckboxButton = styled.button`
+const CheckboxButton = styled.button<{ $isCompleted: boolean }>`
+  display: flex;
+  padding: 0.25rem;
+  min-width: 1.75rem;
+  color: ${({ theme, $isCompleted }) =>
+    $isCompleted ? theme.colors.successForeground : theme.colors.secondary};
+  transition: all 0.2s ease;
   margin: 0;
-  padding: 0;
   border: none;
   background-color: transparent;
   cursor: pointer;

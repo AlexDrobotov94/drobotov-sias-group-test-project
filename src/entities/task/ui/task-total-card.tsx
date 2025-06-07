@@ -1,6 +1,7 @@
 import { CardUi } from "@/shared/components/card";
 import styled from "styled-components";
 import { CheckCircle2, Circle, Clock } from "lucide-react";
+import { fluidSize } from "@/shared/utils/fluid";
 
 type TaskTotalStatus = "total" | "inProcess" | "done";
 
@@ -26,11 +27,11 @@ export function TaskTotalCard(props: TasdkTotalCardProps) {
   const renderIcon = () => {
     switch (status) {
       case "total":
-        return <Circle />;
+        return <Circle size={24} />;
       case "inProcess":
-        return <CheckCircle2 />;
+        return <CheckCircle2 size={24} />;
       case "done":
-        return <Clock />;
+        return <Clock size={24} />;
     }
   };
 
@@ -66,7 +67,7 @@ const Status = styled.div`
 `;
 
 const Total = styled.div<{ $variant: TaskTotalStatus }>`
-  font-size: ${({ theme }) => theme.fontSizes["2xl"]};
+  font-size: ${fluidSize(30, 24)};
   font-weight: 700;
   color: ${({ theme, $variant }) => {
     switch ($variant) {
@@ -83,8 +84,8 @@ const Total = styled.div<{ $variant: TaskTotalStatus }>`
 const IconContainer = styled.div<{ $variant: TaskTotalStatus }>`
   display: grid;
   place-items: center;
-  width: 3rem; // 48px
-  height: 3rem; // 48px
+  width: ${fluidSize(48, 40)}; // 48px
+  height: ${fluidSize(48, 40)}; // 48px
   border-radius: ${({ theme }) => theme.rounded.base};
   color: ${({ theme, $variant }) => {
     switch ($variant) {

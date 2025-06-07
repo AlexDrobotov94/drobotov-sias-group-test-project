@@ -7,6 +7,7 @@ import {
   TasksTotalsWidget,
 } from "@/widgets/tasks-actions";
 import { CronBadge } from "@/features/tasks-cron";
+import { fluidSize } from "@/shared/utils/fluid";
 
 export function MainPage() {
   return (
@@ -17,7 +18,6 @@ export function MainPage() {
             Task Manager
           </Title>
           <Typography size="large">Тестовое задание Дроботов</Typography>
-          <Typography size="large">Test deploy update</Typography>
         </HeaderContainer>
 
         <TasksTotalsWidget />
@@ -35,7 +35,7 @@ export function MainPage() {
 const Root = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing["3xl"]};
+  gap: ${fluidSize(48, 32)}; //48px 32px
   padding-top: ${({ theme }) => theme.spacing.xl};
   padding-bottom: ${({ theme }) => theme.spacing.xl};
 `;

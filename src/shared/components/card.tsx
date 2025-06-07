@@ -14,4 +14,9 @@ const Root = styled.article`
   padding: ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.rounded.lg};
   background-color: ${({ theme }) => theme.colors.white};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    gap: ${({ theme }) => theme.spacing.md};
+    padding: ${({ theme }) => theme.spacing.md};
+  }
 `;

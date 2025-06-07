@@ -32,6 +32,7 @@ export function TasksFilters() {
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: ${({ theme }) => theme.spacing.base};
 `;
 

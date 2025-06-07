@@ -1,14 +1,21 @@
 import { store } from "@/shared/store/store";
 import { generateMockTask, addTask } from "@/entities/task";
-import { GENERATOR_RANDOM_DELAY } from "../config";
+import { TASKS_CRON_CONFIG } from "../config";
+
+const ENABLE_CRON = TASKS_CRON_CONFIG.enableCron;
 
 class TaskAutoGeneratorService {
   private timeoutId: NodeJS.Timeout | null = null;
   private isRunning = false;
 
   start() {
+    if (!ENABLE_CRON) {
+      console.warn("TaskAutoGenerator не запущен: ENABLE_CRON=false");
+      return;
+    }
+
     if (this.isRunning) {
-      console.warn("TaskAutoGenerator уже запущен");
+      // console.warn("TaskAutoGenerator уже запущен");
       return;
     }
 
@@ -19,7 +26,7 @@ class TaskAutoGeneratorService {
   private scheduleNext() {
     if (!this.isRunning) return;
 
-    const delay = this.getRandomDelay(GENERATOR_RANDOM_DELAY);
+    const delay = this.getRandomDelay(TASKS_CRON_CONFIG.generatorRandomDelay);
 
     this.timeoutId = setTimeout(() => {
       const task = generateMockTask();
