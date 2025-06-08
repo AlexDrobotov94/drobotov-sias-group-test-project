@@ -49,6 +49,7 @@ const HeaderContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 
   gap: ${({ theme }) => theme.spacing.md};
 `;
