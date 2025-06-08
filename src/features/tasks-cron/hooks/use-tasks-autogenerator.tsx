@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
-import { generateMockTask, addTask, tasksNotifications } from "@/entities/task";
+import { generateMockTask, addTask } from "@/entities/task";
 import { TASKS_CRON_CONFIG } from "../config";
 import { useAppDispatch } from "@/shared/store/hooks";
 
@@ -24,7 +24,6 @@ export const useTaskAutoGenerator = (autoStart = false) => {
     timeoutIdRef.current = setTimeout(() => {
       const task = generateMockTask();
       dispatch(addTask(task));
-      tasksNotifications.taskAdded(task.title);
 
       scheduleNext();
     }, delay);
