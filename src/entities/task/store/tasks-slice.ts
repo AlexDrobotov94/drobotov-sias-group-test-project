@@ -93,4 +93,6 @@ export const {
   editTask,
 } = tasksSlice.actions;
 
-export default tasksSlice.reducer;
+const tasksReducer = tasksSlice.reducer;
+
+export { tasksReducer };

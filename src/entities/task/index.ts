@@ -1,3 +1,5 @@
+export { tasksReducer } from "./store/tasks-slice";
+
 export { tasksNotifications } from "./model/notifications";
 
 export { generateMockTask } from "./model/mock-generator";
