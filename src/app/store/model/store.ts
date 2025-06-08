@@ -1,10 +1,8 @@
-import { tasksReducer } from "@/entities/task";
 import { configureStore } from "@reduxjs/toolkit";
+import { rootReducer } from "./reducers";
 
 export const store = configureStore({
-  reducer: {
-    tasks: tasksReducer,
-  },
+  reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

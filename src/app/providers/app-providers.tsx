@@ -4,7 +4,7 @@ import { Toaster } from "sonner";
 
 import { theme } from "@/shared/styles/theme";
 import { GlobalStyle } from "@/shared/styles/global";
-import { store } from "@/shared/store/store";
+import { store } from "../store";
 
 interface AppProvidersProps {
   children: React.ReactNode;
