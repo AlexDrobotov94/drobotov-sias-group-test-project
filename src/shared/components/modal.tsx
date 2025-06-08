@@ -37,7 +37,7 @@ export function Modal({
           <DialogTitle asChild={!!title}>
             {title ? <Typography variant="h3">{title}</Typography> : null}
           </DialogTitle>
-          <Dialog.Description></Dialog.Description>
+          <DialogDescription></DialogDescription>
 
           {children}
 
@@ -90,6 +90,10 @@ const DialogTitle = styled(Dialog.Title)`
   margin: 0;
   font-weight: 600;
   color: #111;
+`;
+
+const DialogDescription = styled(Dialog.Description)`
+  display: none;
 `;
 
 const CloseButton = styled(Dialog.Close)`
