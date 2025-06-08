@@ -10,7 +10,7 @@ Task Manager с возможностью создания, редактиров�
 
 ## 🛠 Технологии
 
-- React 18
+- React 19
 - TypeScript
 - Redux Toolkit
 - Styled Components
@@ -23,6 +23,9 @@ Task Manager с возможностью создания, редактиров�
 
 ```bash
 npm install
+```
+
+```bash
 npm run dev
 ```
 
@@ -30,6 +33,9 @@ npm run dev
 
 ```bash
 npm run build
+```
+
+```bash
 npm run preview
 ```
 
