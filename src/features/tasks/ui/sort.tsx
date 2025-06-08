@@ -1,12 +1,11 @@
 import { toggleTasksSorting } from "@/entities/task";
 import { ButtonUi } from "@/shared/components/buttons";
 import { SortAsc } from "lucide-react";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "@/shared/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/shared/store/hooks";
 
 export function SortTasks() {
   const sorting = useAppSelector((state: RootState) => state.tasks.sorting);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleClick = () => {
     dispatch(toggleTasksSorting());

@@ -1,21 +1,20 @@
 import { deleteTask, toggleCompleteTask } from "@/entities/task";
 
-import { useDispatch } from "react-redux";
 import { filterTasksByPriority } from "../model/filtering";
 import { sortTasks } from "../model/sorting";
 import { useMemo } from "react";
-import { useAppSelector } from "@/shared/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/shared/store/hooks";
 
 export function useTasksList({ editTask }: { editTask: (id: string) => void }) {
   const tasks = useAppSelector((state) => state.tasks.tasks);
   const priorityFilter = useAppSelector((state) => state.tasks.priorityFilter);
   const sorting = useAppSelector((state) => state.tasks.sorting);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const tasksReady = useMemo(() => {
     const filteredTasks = filterTasksByPriority(tasks, priorityFilter);
-    return sortTasks(filteredTasks, sorting);
+    return sortTasks({ tasks: filteredTasks, sorting });
   }, [tasks, priorityFilter, sorting]);
 
   const handleCheck = (id: string) => dispatch(toggleCompleteTask({ id }));

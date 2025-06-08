@@ -18,6 +18,7 @@ export type {
   TaskDTO,
   TaskStorePriority,
   TasksSorting,
+  TaskPriority,
 } from "./model/types";
 
 export { TaskTotalCard } from "./ui/task-total-card";

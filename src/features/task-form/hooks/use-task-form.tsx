@@ -2,8 +2,9 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { addTask, editTask } from "@/entities/task";
-import { useDispatch } from "react-redux";
+
 import type { TaskFormProps } from "../model/types";
+import { useAppDispatch } from "@/shared/store/hooks";
 
 const taskSchema = z.object({
   title: z
@@ -23,7 +24,7 @@ type TaskFormValues = z.infer<typeof taskSchema>;
 
 export function useTaskForm(props: TaskFormProps) {
   const { mode, onCancel } = props;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const {
     register,

@@ -3,8 +3,7 @@ import {
   type TaskStorePriority,
 } from "@/entities/task";
 import { useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "@/shared/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/shared/store/hooks";
 
 type FilterOption = {
   value: TaskStorePriority;
@@ -20,7 +19,7 @@ const FILTER_OPTIONS: FilterOption[] = [
 
 export function useTasksFilters() {
   const priorityFilter = useAppSelector((state) => state.tasks.priorityFilter);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleFilterChange = useCallback(
     (filter: TaskStorePriority) => {
