@@ -3,7 +3,6 @@ import { RootLayout } from "@/shared/layouts/root-layout";
 import { Toaster } from "sonner";
 import { AppProviders } from "./providers/app-providers";
 
-// TODO: fsd linter
 function App() {
   return (
     <AppProviders>
